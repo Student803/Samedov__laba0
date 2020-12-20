@@ -1,17 +1,17 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-//Обновить пару числа Леонардо
+
 #define UP(IA,IB) temp = IA; IA += IB + 1; IB = temp;
 #define DOWN(IA,IB) temp = IB; IB = IA - IB - 1; IA = temp;
 
-//  Проверить, являются ли числа a и b сортированными
+
 inline bool IsSorted(int a, int b)
 {
 	return a < b ? true : false;
 }
 
-// Просейка
+
 inline void Sift(int& root1, int& baseStretch1, int& companionStretch1, vector<int>& A)
 {
 	int r0, r2, temp;
@@ -45,7 +45,7 @@ inline void Sift(int& root1, int& baseStretch1, int& companionStretch1, vector<i
 		A[root1] = t;
 }
 
-//положить элемент в кучу
+
 inline void push(int i, vector<int>& A)
 {
 	A.push_back(i);
@@ -118,8 +118,7 @@ inline void Trinkle(int& leoHeapPlan, int& baseStretch1, int& H1Size, int& H2Siz
 	Sift(root1, baseStretch1, companionStretch1, A);
 }
 
-//semitrinkle следит за двумя поддеревьями и он обменивает их
-//корни при необходимости и использует trinkle, чтобы восстановить корень
+
 inline void SemiTrinkle(int& root1, int& rightMostElementOfUnsortedList, int& H2Size, int& baseStretch1, int& companionStretch1, int& leoHeapPlan, int& H1Size, vector<int>& A)
 {
 	int T;
@@ -152,7 +151,6 @@ inline void SmoothSorting(vector<int>& A)
 		{
 			int baseStretch1 = H1Size;
 			int companionStretch1 = H2Size;
-			//применение просейки для rightMostElementOfUnsortedList
 			Sift(root1, baseStretch1, companionStretch1, A);
 			leoHeapPlan = (leoHeapPlan + 1) >> 2;
 			UP(H1Size, H2Size);
